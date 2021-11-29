@@ -170,7 +170,7 @@ class GoogleDriveHelper:
         # File body description
         file_metadata = {
             'name': file_name,
-            'description': 'Uploaded by Mirror-leech-telegram-bot',
+            'description': '𝗨𝗽𝗹𝗼𝗮𝗱𝗲𝗱 𝗯𝘆 𝗠𝗦𝗣 𝗠𝗶𝗿𝗿𝗼𝗿𝘀',
             'mimeType': mime_type,
         }
         try:
