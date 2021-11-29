@@ -754,7 +754,7 @@ class GoogleDriveHelper:
         for content in self.telegraph_content:
             self.path.append(
                 telegraph.create_page(
-                    title='𝗠𝗦𝗣 𝗠𝗶𝗿𝗿𝗼𝗿𝘀 𝗗𝗿𝗶𝘃𝗲 𝗦𝗲𝗮𝗿𝗰𝗵',
+                    title='𝗠𝗦𝗣 𝗠𝗶𝗿𝗿𝗼𝗿𝘀 𝗦𝗲𝗮𝗿𝗰𝗵',
                     content=content
                 )["path"]
             )
