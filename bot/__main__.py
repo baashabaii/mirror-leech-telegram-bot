@@ -43,22 +43,21 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'𝗨𝗣𝗧𝗜𝗠𝗘 : <code>{currentTime}</code>\n' \
-            f'𝗧𝗼𝘁𝗮𝗹 𝗗𝗶𝘀𝗸 𝗦𝗽𝗮𝗰𝗲 : <code>{total}</code>\n' \
-            f'𝗨𝘀𝗲𝗱 : <code>{used}</code>' \
-            f'𝗨𝗟 : <code>{sent}</code>\n' \
-            f'𝗗𝗟 : <code>{recv}</code>\n\n' \
-            f'𝗖𝗣𝗨 : <code>{cpuUsage}%</code>' \
-            f'𝗥𝗔𝗠 : <code>{memory}%</code>' \
-            f'𝗗𝗜𝗦𝗞 : <code>{disk}%</code>'
-            f'𝗣𝗵𝘆𝘀𝗶𝗰𝗮𝗹 𝗖𝗼𝗿𝗲𝘀: {p_core}\n'\
-            f'𝗧𝗼𝘁𝗮𝗹 𝗖𝗼𝗿𝗲𝘀: {t_core}\n\n'\
-            f'𝗦𝗪𝗔𝗣: {swap_t} | <b>Used:</b> {swap_p}%\n'\
-            f'𝗠𝗲𝗺𝗼𝗿𝘆 𝗧𝗼𝘁𝗮𝗹: {mem_t}\n'\
-            f'𝗠𝗲𝗺𝗼𝗿𝘆 𝗙𝗿𝗲𝗲: {mem_a}\n'\
-            f'𝗠𝗲𝗺𝗼𝗿𝘆 𝗨𝘀𝗲𝗱: {mem_u}\n'
+    stats = f'<b>Bot Uptime:</b> {currentTime}\n\n'\
+            f'<b>Total Disk Space:</b> {total}\n'\
+            f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
+            f'<b>Upload:</b> {sent}\n'\
+            f'<b>Download:</b> {recv}\n\n'\
+            f'<b>CPU:</b> {cpuUsage}%\n'\
+            f'<b>RAM:</b> {mem_p}%\n'\
+            f'<b>DISK:</b> {disk}%\n\n'\
+            f'<b>Physical Cores:</b> {p_core}\n'\
+            f'<b>Total Cores:</b> {t_core}\n\n'\
+            f'<b>SWAP:</b> {swap_t} | <b>Used:</b> {swap_p}%\n'\
+            f'<b>Memory Total:</b> {mem_t}\n'\
+            f'<b>Memory Free:</b> {mem_a}\n'\
+            f'<b>Memory Used:</b> {mem_u}\n'
     sendMessage(stats, context.bot, update)
-
 
 def start(update, context):
     buttons = button_build.ButtonMaker()
