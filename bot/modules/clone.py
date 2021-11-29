@@ -23,9 +23,10 @@ def cloneNode(update, context):
         link = ''
     gdtot_link = is_gdtot_link(link)
     if gdtot_link:
+        msg0 = sendMessage('Connecting to GDToT.....', context.bot, update)
         try:
             link = gdtot(link)
-            msg0 = sendMessage('Connecting to GDToT\n\nLink: <code>{link}</code>', context.bot, update)
+            deleteMessage(context.bot, msg0)
         except DirectDownloadLinkException as e:
             return sendMessage(str(e), context.bot, update)
     if is_gdrive_link(link):
@@ -47,7 +48,6 @@ def cloneNode(update, context):
                 msg2 = f'Failed, Clone limit is {CLONE_LIMIT}GB.\nYour File/Folder size is {get_readable_file_size(size)}.'
                 sendMessage(msg2, context.bot, update)
                 return
-            deleteMessage(context.bot, msg0)
         if files <= 10:
             msg = sendMessage(f"Cloning: <code>{link}</code>", context.bot, update)
             result, button = gd.clone(link)
