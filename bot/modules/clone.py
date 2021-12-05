@@ -23,10 +23,8 @@ def cloneNode(update, context):
         link = ''
     gdtot_link = is_gdtot_link(link)
     if gdtot_link:
-        msg0 = sendMessage('Connecting to GDToT.....', context.bot, update)
         try:
             link = gdtot(link)
-            deleteMessage(context.bot, msg0)
         except DirectDownloadLinkException as e:
             return sendMessage(str(e), context.bot, update)
     if is_gdrive_link(link):
@@ -41,6 +39,8 @@ def cloneNode(update, context):
             if smsg:
                 msg3 = "File/Folder is already available in Drive.\nHere are the search results:"
                 sendMarkup(msg3, context.bot, update, button)
+                if gdtot_link:
+                    gd.deletefile(link)
                 return
         if CLONE_LIMIT is not None:
             LOGGER.info('Checking File/Folder Size...')
@@ -89,4 +89,6 @@ def cloneNode(update, context):
         sendMessage('Send Gdrive or gdtot link along with command or by replying to the link by command', context.bot, update)
 
 clone_handler = CommandHandler(BotCommands.CloneCommand, cloneNode, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+gdtot_handler = CommandHandler(BotCommands.GdToTCommand, cloneNode, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 dispatcher.add_handler(clone_handler)
+dispatcher.add_handler(gdtot_handler)
